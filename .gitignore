@@ -1,0 +1,14 @@
+# Ignore Python bytecode files
+__pycache__/
+
+# Ignore environment-specific files
+.env
+
+# Ignore output files or directories
+output/
+*.out
+Logs/
+*.log
+TestsOutput/
+output*/
+output_february_25/
