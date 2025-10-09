@@ -1,0 +1,29 @@
+# Auto-generated from source imports on 2025-09-29
+# Recreate with: grep -R "^import \|^from " -n . (and adjust)
+
+# LLM / LangChain stack
+openai>=1.0.0
+langchain>=0.2.0
+langchain-openai>=0.1.0
+langchain-community>=0.2.0
+
+# Validation / models (pulled transitively but can pin)
+# pydantic>=1.10.0
+
+# Progress display
+tqdm>=4.0.0
+
+# HTML / formatting
+json2html>=1.3.0
+
+# Cryptography (AES via Crypto.Cipher)
+pycryptodome>=3.18.0
+
+# HTTP / networking
+requests>=2.31.0
+urllib3>=2.0.0
+
+# Notes:
+# - Remove comments or pin exact versions for production reproducibility.
+# - Standard library & local modules intentionally excluded.
+# - langchain-community added for Ollama fallback support.
