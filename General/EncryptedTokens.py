@@ -2,10 +2,10 @@ import os
 import base64
 import hashlib
 from Crypto.Cipher import AES
+from General.EnvConfig import get_env_var
 
 
 irius_token = b'irius_token_encrypted'
-azure_keys = [b'azure_key_1_encrypted', b'azure_key_2_encrypted']
 jira_token = b'jira_token_encrypted'
 
 # Optional clear-text overrides (useful for local/dev without env vars)
@@ -80,10 +80,10 @@ def get_irius_token():
     return decrypt(irius_token)
 
 def get_azure_key():
-    #maybe better to select randomly?
-    if len(azure_keys) == 0:
-        return "CONFIG_PLACEHOLDER"
-    return decrypt(azure_keys[1 if len(azure_keys) > 1 else 0])
+    """
+    Gets the Azure OpenAI API key directly from the environment variable.
+    """
+    return os.getenv("AZURE_OPENAI_API_KEY", "CONFIG_PLACEHOLDER")
 
 def get_jira_token():
     return decrypt(jira_token)
