@@ -1,14 +1,18 @@
-# Auto-generated from source imports on 2025-09-29
-# Recreate with: grep -R "^import \|^from " -n . (and adjust)
+# Auto-generated from source imports on 2025-10-20
+# Updated to include multi-cloud LLM support (Azure, Gemini, Claude, Ollama)
 
-# LLM / LangChain stack
+# Core LLM / LangChain stack
 openai>=1.0.0
 langchain>=0.2.0
 langchain-openai>=0.1.0
 langchain-community>=0.2.0
+langchain-core>=0.2.0
 
-# Validation / models (pulled transitively but can pin)
-# pydantic>=1.10.0
+# Environment management
+python-dotenv>=1.0.0
+
+# Validation / models
+pydantic>=2.0.0
 
 # Progress display
 tqdm>=4.0.0
@@ -24,6 +28,10 @@ requests>=2.31.0
 urllib3>=2.0.0
 
 # Notes:
-# - Remove comments or pin exact versions for production reproducibility.
-# - Standard library & local modules intentionally excluded.
-# - langchain-community added for Ollama fallback support.
+# - python-dotenv: Required for .env file loading (EnvConfig.py)
+# - langchain-core: Required for langchain message types
+# - pydantic v2: Required for structured output validation
+# - urllib3: Used for SSL warning suppression in corporate proxy environments
+# - All cloud LLM providers (Azure, Gemini, Claude) use requests library
+# - Ollama support via langchain-community
+# - Standard library & local modules intentionally excluded
