@@ -2,7 +2,7 @@ from General.Entities import *
 from AI.langchain_api_access import simple_message
 from General.Entities import JobType
 import json
-from langchain_core.pydantic_v1 import BaseModel, Field
+from pydantic import BaseModel, Field
 from typing import List, Optional
 
 
@@ -61,11 +61,13 @@ def generate_test_creation_general_prompt(cm_details, prompt):
 def generate_prompt(cm_details, job_type = JobType.CREATE_TEST):
     if job_type == JobType.CREATE_TEST:
         return f"""
-            Using the component, threat, and countermeasure below as context, explain the countermeasure in a clear way to someone not familiar with cybersecurity.
-            Create a new name for a cybersecurity countermeasure that clearly indicates its main function, the specific component name it protects, and the system or software it is associated with, if relevant. 
-            Also, create a description of the countermeasure, explain its importance and how it mitigates the threat. Use layman's terms and avoid technical jargon. you don't need to repeat the name in the description unless it's necessary.
-            Include any specific examples or practical steps from the original countermeasure description and rephrase them for clarity if necessary. If there are no examples or practical steps,  create a relevant example to illustrate how the countermeasure operates.
-            If there is a link provided in the original countermeasure description, use that exact link in your description.
+        Conduct research on the specified countermeasure provided below.
+        Craft a detailed test plan tailored for individuals not well-versed in cybersecurity.
+        This plan should be specific to a particular threat existing within a designated component.
+        Ensure clarity by providing explicit instructions, no more than 8 steps, on how to conduct security validation.
+        Each instruction clearly detailing actions to validate the countermeasure's effectiveness against the threat. no general securtiy suggestions.
+        If there are existing test steps for the component, enhance them for better understanding. you can also conduct research for the improvement, research instruction are in the next line.
+        If not, conduct research to create them and in the research avoid mentioning specific component names or referring to any particular entities.
                 
             Current countermeasure details:
             {cm_details}
